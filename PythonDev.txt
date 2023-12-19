@@ -1,0 +1,374 @@
+###############################################################
+1. Basic Python Knowledge:
+- Explain the difference between Python 2 and Python 3.
+
+1)Print Statement vs. Function:
+
+Python 2- print is a statement,  can use it without parentheses. For example: print "Hello"
+Python 3- print is a function and requires parentheses. For example: print("Hello")
+
+2)Division:
+
+Python 2- When dividing two integers with the / operator, it performs integer division .
+To perform true division, need to use from __future__ import division.
+Python 3- The / operator always performs true division for integers, yielding a float .
+
+3)Unicode:
+
+Python 2- Strings are of type str and don't fully support Unicode by default. To handle Unicode strings, unicode type is used.
+Python 3- Strings are of type str by default and fully support Unicode characters. To represent byte strings, bytes type is used.
+
+4)xrange() vs. range():
+
+Python 2- xrange() generates elements lazily and is used for better memory efficiency .
+Python 3- xrange() is removed, and range() behaves similarly to Python 2's xrange() by default, providing the benefits of lazy evaluation.
+
+5)input() vs. raw_input():
+
+Python 2- input() evaluates the input as Python code, while raw_input() returns the user's input as a string.
+Python 3- input() behaves similarly to Python 2's raw_input() by default, returning the user's input as a string.
+The old input() functionality is available in Python 3 as eval(input()).
+
+6)Exception Handling Syntax:
+
+Python 2- except block syntax uses a comma-separated list of exceptions (e.g., except IOError, e:).
+Python 3- except block syntax requires as to handle exceptions (e.g., except IOError as e:).
+
+- Describe Python's data types, such as integers, strings, lists, dictionaries, and
+sets.
+
+1)Integers (int)- Integers in Python are whole numbers without any decimal point. They can be positive or negative.
+eg: -5, 0, 2, etc.
+
+2)Floats (float)- Floats represent real numbers and include a decimal point. They can also be positive or negative.
+eg: 2.14, 3.71828, etc.
+
+3)Strings (str)- Strings are sequences of characters enclosed within single quotes (') or double quotes (").
+Python strings are immutable. eg: 'Hello', "shazeen", '123', etc.
+
+4)Lists (list)- Lists are ordered collections that can hold heterogeneous data types. They are mutable, allowing
+modifications like adding, removing, or changing elements. Lists are defined within square brackets []. eg: ['mom', 'dad', 'brother'], [1, 2, 3, 4], etc.
+
+5)Tuples (tuple)- Similar to lists, tuples are ordered collections, but they are immutable once created. Tuples are defined within parentheses (). eg: ('apple', 'banana', 'pineapple'), (1, 2, 3, 4), etc.
+
+6)Dictionaries (dict)- Dictionaries store key-value pairs where each key is associated with a value. They are unordered and mutable. Dictionaries are defined within curly braces {}. For example: {'name': 'shazeen', 'age': 30, 'city': 'galle'}, {1: 'apple', 2: 'banana'}, etc.
+
+7)Sets (set)- Sets are unordered collections of unique elements. They don't allow duplicate values. Sets are defined within curly braces {} but without key-value pairs. For example: {1, 2, 3}, {'shazeen', 'Thowfeek', 'ahamed'}, etc.
+
+- Describe your understanding of variables, data assignment, and variable scope.
+
+Variables-Unlike some other programming languages, Python does not require explicit declaration of variables or specifying their data types.
+we can assign a value to a variable directly.
+x = 2  # 'x' is a variable holding the value 5
+name = "shazeen"  # 'name' holds the string value "shazeen"
+is_student = True  # 'is_student' holds a boolean value True
+
+Data Assignment-Python is dynamically typed,  the type of a variable is inferred based on the value assigned to it. Variables can be reassigned to different data types during runtime.
+x = 5  # 'x' is an integer
+x = "shazeen"  # 'x' is now a string
+
+Variable Scope-
+Global Scope- Variables defined outside of functions or in the global scope can be accessed from anywhere in the code.
+Local Scope- Variables defined within a function have local scope and are only accessible within that function.
+Enclosing (or Nonlocal) Scope: In nested functions, variables from the outer function can be accessed within the inner function using the nonlocal keyword.
+###############################################################################
+2. Control Structures:
+- Write a simple if statement to check a condition.
+
+x = 12
+if x > 5:
+    print("x is greater than 5")
+
+- Advice / write a code that uses a for loop to iterate over a list or range.
+
+fruits = ['apple', 'banana', 'orange', 'grape']
+
+# Using a for loop to iterate over the list
+for fruit in fruits:
+    print(fruit)
+
+- Tell us some example of using while loops.
+
+case-1  Simple while loop
+count = 0
+while count < 6:
+    print("Count:", count)
+    count += 1
+
+case 2: User input with a while loop
+user_input = input("Enter 'exit' to quit: ")
+while user_input != 'exit':
+    print("You entered:", user_input)
+    user_input = input("Enter 'exit' to quit: ")
+
+case 3: Using a while loop to find the factorial of a number
+number = 8
+factorial = 1
+i = 1
+
+while i <= number:
+    factorial *= i
+    i += 1
+print("Factorial of", number, "is", factorial)
+
+################################################################################
+3. Functions:
+- Define a function that takes parameters and returns a value.
+
+# Function definition
+def multiply_numbers(a, b):
+    result = a * b
+    return result
+
+- Describe about the usage of keyword arguments and default parameter values.
+
+Keyword Arguments-Keyword arguments allow you to pass arguments to a function by explicitly specifying the parameter names along with their values.
+
+def greet(name, message):
+    print(f"Hello, {name}! {message}")
+
+# Using keyword arguments
+greet(name="shazeen", message="How are you?")
+
+Default Parameter Values-Default parameter values are assigned to function parameters, providing a default value in case the caller doesn't provide a value for that parameter.
+
+def greet(name, message="Welcome!"):
+    print(f"Hello, {name}! {message}")
+
+# Calling the function without explicitly passing 'message'
+greet("shazeen")  # Output: Hello, shazeen! Welcome!
+
+# Overriding the default value by passing a specific 'message'
+greet("shazeen", "Good morning!")  # Output: Hello, shazeen! Good morning!
+
+
+- Request an example of a function that uses the return statement.
+# Function definition
+def calculate_sum(a, b):
+    total = a + b
+    return total  # Return the sum
+
+# Function call
+result = calculate_sum(3, 5)
+print("The sum is:", result)  # Output the returned value
+
+###############################################################################################
+4. Data Structures:
+- Tell us about your knowledge of lists and their methods (e.g., append, pop,
+index).
+
+1. append()-Adds an element to the end of the list.
+my_list = [1, 2, 3]
+my_list.append(4)
+# Resulting list: [1, 2, 3, 4]
+
+2. pop()-Removes and returns the last element from the list, or a specific element at a given index if an index is provided.
+my_list = [1, 2, 3, 4]
+popped_element = my_list.pop()
+# 'popped_element' will be 4, 'my_list' will be [1, 2, 3]
+
+3. index()-Returns the index of the first occurrence of a specified value in the list.
+my_list = [10, 20, 30, 20, 40]
+index = my_list.index(20)
+# 'index' will be 1 (the index of the first occurrence of 20)
+
+4. insert()-Inserts an element at a specified index in the list.
+my_list = [1, 2, 4, 5]
+my_list.insert(2, 3)
+# Resulting list: [1, 2, 3, 4, 5]
+
+5. remove()-Removes the first occurrence of a specified value from the list.
+my_list = [1, 2, 3, 4, 3, 5]
+my_list.remove(3)
+# Resulting list: [1, 2, 4, 3, 5]
+
+6. sort()-Sorts the elements of the list in ascending order. It can also take arguments like reverse=True to sort in descending order.
+my_list = [3, 1, 4, 2]
+my_list.sort()
+# Resulting list: [1, 2, 3, 4]
+
+7. len()-Returns the number of elements in the list.
+my_list = [10, 20, 30, 40]
+length = len(my_list)
+# 'length' will be 4
+
+- Advice about work with dictionaries, including adding, modifying, and
+accessing keys and values.
+
+Creating a Dictionary:
+# Creating an empty dictionary
+my_dict = {}
+
+# Creating a dictionary with initial key-value pairs
+my_dict = {'name': 'shazeen', 'age': 30, 'city': 'galle'}
+
+Accessing Values:
+# Accessing values using keys
+name = my_dict['name']  # Retrieves the value associated with the key 'name'
+
+Adding/Modifying Keys and Values:
+# Adding a new key-value pair
+my_dict['gender'] = 'Male'
+
+# Modifying the value of an existing key
+my_dict['age'] = 40
+
+Checking if a Key Exists:
+# Checking if a key exists in the dictionary
+if 'age' in my_dict:
+    print("Age exists in the dictionary")
+
+Removing Key-Value Pairs:
+# Removing a key-value pair using del keyword
+del my_dict['city']
+
+# Removing a key-value pair and getting the value using pop()
+removed_value = my_dict.pop('age')
+
+# Iterating through keys
+for key in my_dict:
+    print(key, ":", my_dict[key])
+
+# Iterating through key-value pairs
+for key, value in my_dict.items():
+    print(key, ":", value)
+
+###############################################################################
+5. Exception Handling:
+- Write a code that handles exceptions using try and except blocks.
+
+def divide_numbers(a, b):
+    try:
+        result = a / b
+        print("Division result:", result)
+    except ZeroDivisionError:
+        print("Error: Division by zero is not allowed.")
+    except TypeError:
+        print("Error: Please provide valid numbers for division.")
+    except Exception as e:
+        print("An error occurred:", e)
+    else:
+        print("Division operation executed successfully.")
+    finally:
+        print("Execution completed.")
+
+- Tell us about the purpose of the finally block.
+The finally block in Python is used in conjunction with a try-except block and provides a way to execute code irrespective
+of whether an exception occurs or not. It ensures that certain code statements are always executed, regardless of whether an
+exception is raised or not, and is generally used for cleanup or finalization tasks.
+
+#############################################################################
+6. File Handling:
+- Provide a code to read from and write to a text file.
+
+# Writing data to a text file
+with open('sample.txt', 'w') as file:
+    file.write("Hello, im shazeen.\n")
+
+# Reading data from a text file
+with open('sample.txt', 'r') as file:
+    data = file.read()
+    print(data)
+
+- Explain the difference between reading modes ('r', 'w', 'a').
+'r': Read-only mode, file must exist.
+'w': Write mode, overwrites existing content or creates a new file.
+'a': Append mode, adds new content to the end of the file or creates a new file.
+
+#######################################################################################
+7. Object-Oriented Programming (OOP):
+- Tell us about your understanding about the basics of classes and objects in
+Python.
+
+In Python, classes and objects are fundamental concepts in object-oriented programming (OOP). They allow you to create
+blueprints for creating objects with specific attributes (properties) and behaviors (methods).
+
+
+- Create a simple class with attributes and methods.
+class Car:
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+    def drive(self):
+        return f"Driving the {self.make} {self.model}"
+
+########################################################################################
+8. Modules and Libraries:
+- Tell us about the importing and using external modules (e.g., math, random).
+In Python, modules are files containing Python code that can be used in other Python programs. The modules can consist
+of functions, classes, and variables, which can be imported and utilized in your code.
+
+import math
+import random
+
+# Using math functions
+print(math.sqrt(25))
+
+# Using random functions
+print(random.randint(1, 10))
+
+- Tell us about the purpose of commonly used libraries like os, sys, or
+datetime.
+
+1. os Module:The os module provides a way to interact with the operating system. It offers functions for working with
+file systems, directories, environment variables, and more.
+
+2. sys Module:The sys module provides access to some variables used or maintained by the Python interpreter and functions
+that interact with the Python runtime environment.
+
+3. datetime Module:The datetime module provides classes for manipulating dates and times in a Python program.
+
+########################################################################################
+9. Basic Algorithms and Problem Solving:
+- Present a coding problem that involves iterating over data and performing a
+simple operation (e.g., finding the sum of all even numbers in a list).
+
+def sum_of_even_numbers(nums):
+    even_sum = 0
+    for num in nums:
+        if num % 2 == 0:
+            even_sum += num
+    return even_sum
+
+# Example usage
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+result = sum_of_even_numbers(numbers)
+print("Sum of even numbers:", result)
+
+##############################################################################################
+10. Coding Exercises:
+- Write a Python code that could solve a problem by include tasks like reversing
+a string, calculating Fibonacci numbers, or implementing a simple data
+structure.
+
+def reverse_string(input_string):
+    # Using string slicing to reverse the input string
+    reversed_str = input_string[::-1]
+    return reversed_str
+
+# Example usage
+input_str = 'Hello, World!'
+reversed_result = reverse_string(input_str)
+print("Original String:", input_str)
+print("Reversed String:", reversed_result)
+
+##############################################################################################
+11. Version Control:
+- Tell us about your understanding of basic Git commands.
+
+git init: Initialize a new Git repository in the current directory.
+git clone <repository_URL>: Clone/download an existing repository from a remote URL to the local machine.
+git status: Check the status of changes in the working directory.
+git add <file> or git add .: Add changes in files to the staging area (index) to prepare them for commit.
+git commit -m "Commit message": Commit staged changes to the local repository with a descriptive message.
+git commit -a -m "Commit message": Shortcut to add and commit all modified files in one command.
+git reset <file>: Unstage a file from the staging area.
+git rm <file>: Remove a file from the working directory and stage the deletion.
+git branch: List all local branches.
+git branch <branch_name>: Create a new branch.
+git checkout <branch_name>: Switch to a different branch.
+git merge <branch_name>: Merge changes from a specified branch into the current branch.
+git remote add <name> <URL>: Add a remote repository URL with a name.
+git push <remote_name> <branch_name>: Push commits to a remote repository.
+git pull <remote_name> <branch_name>: Fetch and merge changes from a remote repository to the local branch.

@@ -1,0 +1,49 @@
+---
+- name: Perform actions based on provided variable
+  hosts: all
+  gather_facts: true
+  vars:
+    email_alert_address: "your_email@example.com"  # Replace with the email address for alerts
+
+  tasks:
+    - name: Verify or Install services
+      block:
+        - name: Check if httpd is installed on host1
+          stat:
+            path: /usr/sbin/httpd
+          register: httpd_installed
+          when: action == 'verify_install' and inventory_hostname == 'host1'
+
+        - name: Install httpd on host1 if not installed
+          package:
+            name: httpd
+            state: present
+          when: action == 'verify_install' and inventory_hostname == 'host1' and httpd_installed.stat.exists == False
+
+    - name: Check disk space
+      block:
+        - name: Gather disk facts
+          ansible.builtin.shell: df -h
+          register: disk_facts
+
+        - name: Alert if disk usage is over 80%
+          ansible.builtin.debug:
+            msg: "Disk usage is over 80% on {{ item.filesystem }}: {{ item.percent }}"
+          when: item.percent | int > 80
+          loop: "{{ disk_facts.stdout_lines[1:] }}"
+          notify: email_alert
+
+    - name: Check application status
+      block:
+        - name: Retrieve rbcapp1 status and services down
+          uri:
+            url: "https://myservice.example.com/healthcheck"
+            method: GET
+            return_content: yes
+          register: rbcapp_status
+
+        - name: Display rbcapp1 status and services down
+          debug:
+            msg: |
+              rbcapp1 Status: {{ rbcapp_status.json.status }}
+              Services Down: {{ rbcapp_status.json | difference(['UP']) }}
